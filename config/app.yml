@@ -1,0 +1,12 @@
+default: &default
+  sender: "hello@instaclone.com"
+  secret: "0b414ccd2eaefdc76a07e261c337de1b1f9483f2eaf46844e1d0cb12312e5884517353f188e928735cf1b31ab77696a08c690d4a0fa3e66e9fde493f27f4dab1"
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

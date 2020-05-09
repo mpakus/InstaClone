@@ -38,3 +38,6 @@ yarn-debug.log*
 /.idea/
 /log/
 /tmp/
+
+/config/*.local.yml
+/config/credentials/local.*
