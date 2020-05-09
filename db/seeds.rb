@@ -4,3 +4,6 @@ User.create(
   password: 'Password9'
 )
 
+
+# use https://picsum.photos/ for placeholders
+

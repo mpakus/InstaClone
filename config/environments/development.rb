@@ -55,4 +55,9 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   Slim::Engine.set_options pretty: true
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # config.action_controller.default_url_options = { host: 'localhost', port: 5000 }
+  Rails.application.routes.default_url_options[:host] = 'localhost:5000'
 end

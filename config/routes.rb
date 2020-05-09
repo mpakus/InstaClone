@@ -14,4 +14,11 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
+
+  namespace :api do
+    namespace :v1 do
+      get 'profile' => 'profile#index', as: :profile
+      resources :posts, only: %i[create]
+    end
+  end
 end

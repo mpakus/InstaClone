@@ -23,4 +23,11 @@ class ApplicationController < ActionController::Base
     # :user is the scope we are authenticating
     store_location_for(:user, request.fullpath)
   end
+
+  def user_token
+    return unless user_signed_in?
+
+    User::Tokenize.new(current_user).perform
+  end
+  helper_method :user_token
 end

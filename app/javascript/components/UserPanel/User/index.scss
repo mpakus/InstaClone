@@ -1,0 +1,32 @@
+@import "../../../styles/theme";
+
+.profile-sidebar {
+  padding: 20px 0 10px 0;
+  background-color: $blue;
+  color: $white;
+  border-radius: 5px;
+}
+
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+  padding: 5px;
+  background: $pink;
+}
+
+.profile-usertitle {
+  color: $white;
+  margin-top: 20px;
+  margin-bottom: 7px;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.profile-usermenu {
+  padding: 30px;
+}
