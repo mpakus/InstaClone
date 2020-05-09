@@ -1,0 +1,29 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+
+development:
+  <<: *default
+  database: instaclone_development
+
+test:
+  <<: *default
+  database: instaclone_test
+
+production:
+  <<: *default
+  database: <%= ENV['INSTACLONE_DB_NAME'] %>
+  username: <%= ENV['INSTACLONE_USERNAME'] %>
+  password: <%= ENV['INSTACLONE_PASSWORD'] %>
+  host: <%= ENV['INSTACLONE_HOSTNAME'] %>
+  port: <%= ENV['INSTACLONE_PORT'] %>
+
+staging:
+  <<: *default
+  database: <%= ENV['INSTACLONE_DB_NAME'] %>
+  username: <%= ENV['INSTACLONE_USERNAME'] %>
+  password: <%= ENV['INSTACLONE_PASSWORD'] %>
+  host: <%= ENV['INSTACLONE_HOSTNAME'] %>
+  port: <%= ENV['INSTACLONE_PORT'] %>

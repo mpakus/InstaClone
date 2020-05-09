@@ -1,0 +1,98 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+
+# Offense count: 1
+# Configuration parameters: AllowSafeAssignment.
+Lint/AssignmentInCondition:
+  Enabled: false
+
+# Offense count: 2
+Lint/SuppressedException:
+  Enabled: false
+
+# Offense count: 1
+Metrics/AbcSize:
+  Max: 20
+
+# Offense count: 84
+# Configuration parameters: AllowURI, URISchemes.
+Layout/LineLength:
+  Max: 120
+
+# Offense count: 1
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 21
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
+# Offense count: 6
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Offense count: 19
+Style/Documentation:
+  Enabled: false
+
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - bin/**/*
+    - db/**/*
+    - vendor/**/*
+    - Gemfile.lock
+    - Guardfile
+    - node_modules/**/*
+    - config/routes.rb
+    - lib/tasks/auto_annotate_models.rake
+
+Rails:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Blacklist:
+    - decrement!
+    - decrement_counter
+    - increment!
+    - increment_counter
+    - toggle!
+    - touch
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Layout/HashAlignment:
+  Enabled: false
+
+#Rails/OutputSafety:
+#  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: false
+
+Style/ExponentialNotation:
+  Enabled: false
+
+# rspec
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
+

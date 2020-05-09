@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title
+      | InstaClone - code challenge
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_pack_tag 'application', media: 'all'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .container
+      = yield
