@@ -4,25 +4,28 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Feed from '../components/Feed';
+import Posts from '../components/Posts';
 import UserPanel from '../components/UserPanel';
 import AuthContextProvider from '../contexts/AuthContext';
+import PostsContextProvider from '../contexts/PostsContext';
 // import PropTypes from 'prop-types'
 
 const FeedApp = ({ token }) => {
   return (
     <div className="row">
-      <AuthContextProvider token={token}>
-        <Feed />
-        <UserPanel />
-      </AuthContextProvider>
+      <PostsContextProvider>
+        <AuthContextProvider token={token}>
+          <Posts />
+          <UserPanel />
+        </AuthContextProvider>
+      </PostsContextProvider>
     </div>
   );
 };
 
-FeedApp.defaultProps = {
-  name: 'David'
-};
+// FeedApp.defaultProps = {
+//   name: 'David'
+// };
 
 // App.propTypes = {
 //   name: PropTypes.string

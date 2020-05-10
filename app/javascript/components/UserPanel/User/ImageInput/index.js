@@ -14,7 +14,7 @@ export default function ImageInput({ onChange, imageKey }) {
         className="custom-file-input"
       />
       <label className="btn btn-warning col-12 label-input" htmlFor="imageInput">
-        Image
+        <span className="oi oi-image"></span> <span>Image</span>
       </label>
     </div>
   );

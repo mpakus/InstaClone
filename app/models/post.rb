@@ -2,6 +2,8 @@
 
 class Post < ApplicationRecord
   include Uniqable
+  include Sortable
+
   uniqable :uid
 
   belongs_to :user
@@ -9,6 +11,8 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   validates :image, presence: true
+
+  scope :with_relations, -> { includes(:user) }
 end
 
 # == Schema Information

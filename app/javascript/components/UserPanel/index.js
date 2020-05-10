@@ -6,7 +6,11 @@ import User from './User';
 const UserPanel = () => {
   const { isGuest } = useContext(AuthContext);
 
-  return <div className="col-lg-4">{isGuest() ? <Guest /> : <User />}</div>;
+  return (
+    <div className="col-lg-4">
+      <div className="sticky-top">{isGuest() ? <Guest /> : <User />}</div>
+    </div>
+  );
 };
 
 export default UserPanel;

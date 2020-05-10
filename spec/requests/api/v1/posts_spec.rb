@@ -1,8 +1,44 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Api::V1::Posts', type: :request do
+  let(:user) { create :user }
+
+  # --- GET POSTS ---
+
   describe 'POST /api/v1/posts' do
-    let(:user) { create :user }
+    let(:request) { get api_v1_posts_path, params: params }
+
+      before do
+        create_list :post, 60
+        request
+      end
+
+      context 'with default params' do
+        let(:params) { nil }
+
+        it { expect(response).to have_http_status(:ok) }
+        it { expect(json_body.count).to eq 30 }
+        it { expect(json_body.collect { |p| p['uid'] }).to eq Post.ordered.limit(30).pluck(:uid) }
+      end
+
+      context 'with page: 2 and 5 records per page' do
+        let(:params) do
+          {
+            page: 2,
+            per: 5
+          }
+        end
+
+        it { expect(response).to have_http_status(:ok) }
+        it { expect(json_body.count).to eq 5 }
+        it { expect(json_body.collect { |p| p['uid'] }).to eq Post.ordered.offset(5).limit(5).pluck(:uid) }
+      end
+    end
+ end
+
+  # --- CREATE POST ---
+
+  describe 'POST /api/v1/posts' do
     let(:request) { post api_v1_posts_path, params: params, headers: { "Authorization": auth } }
 
     before { request }

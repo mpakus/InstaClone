@@ -10,6 +10,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'image_processing', '~> 1.2'
 gem 'jwt'
+gem 'kaminari'
 gem 'mini_magick'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'

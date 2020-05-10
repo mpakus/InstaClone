@@ -6,6 +6,7 @@ import createPost from 'services/api/createPost';
 import { AuthContext } from 'contexts/AuthContext';
 import ImageInput from './ImageInput';
 import TextInput from './TextInput';
+import { PostsContext } from '../../../contexts/PostsContext';
 
 const defaultState = { content: '', image: null, creating: false, imageKey: 'imageFile1' };
 
@@ -14,6 +15,8 @@ const User = () => {
   const [state, setState] = useState(defaultState);
 
   const { image, content, creating, imageKey } = state;
+
+  const { resetPosts } = useContext(PostsContext);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -24,8 +27,10 @@ const User = () => {
 
     setState({ ...state, creating: true });
 
-    createPost(image, content).then((data) => {
+    createPost(image, content).then(() => {
       setState({ ...defaultState, imageKey: `imageFile${new Date()}` });
+
+      resetPosts();
     });
   };
 

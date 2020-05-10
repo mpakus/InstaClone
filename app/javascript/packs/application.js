@@ -2,6 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../styles/application.scss';
 
+import '@icon/open-iconic/open-iconic.css';
+
 require('@rails/ujs').start();
 require('turbolinks').start();
 require('@rails/activestorage').start();
