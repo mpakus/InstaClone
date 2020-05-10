@@ -5,7 +5,7 @@ export const PostsContext = createContext();
 
 const INITIAL_STATE = {
   posts: [],
-  page: 0,
+  page: 1,
   haveMore: true,
   loading: true
 };
@@ -18,7 +18,7 @@ const PostsContextProvider = (props) => {
   useEffect(() => {
     if (!loading) return;
 
-    page === 0 ? reloadPosts() : loadPosts();
+    page === 1 ? reloadPosts() : loadPosts();
   }, [loading]);
 
   const loadPosts = () => {
@@ -29,19 +29,23 @@ const PostsContextProvider = (props) => {
 
   const reloadPosts = () => {
     fetchPosts(0).then((data) => {
-      setState({ ...state, page: 0, posts: data, loading: false });
+      setState({ ...state, page: 1, posts: data, loading: false });
     });
   };
 
   const resetPosts = () => {
-    setState({ ...state, page: 0, loading: true });
+    setState({ ...state, page: 1, loading: true });
   };
 
   const loadNextPosts = () => {
-    setState({ ...state, page: page + 1 });
+    setState({ ...state, page: page + 1, loading: true });
   };
 
-  return <PostsContext.Provider value={{ posts, loading, resetPosts }}>{props.children}</PostsContext.Provider>;
+  return (
+    <PostsContext.Provider value={{ posts, loading, haveMore, resetPosts, loadNextPosts }}>
+      {props.children}
+    </PostsContext.Provider>
+  );
 };
 
 export default PostsContextProvider;

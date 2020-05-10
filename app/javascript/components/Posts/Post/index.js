@@ -2,7 +2,7 @@ import React from 'react';
 
 import './index.scss';
 
-const Post = ({ uid, content, image }) => {
+const Post = ({ uid, content, image, user: { name } }) => {
   return (
     <div className="card post-card">
       <img src={image} alt={uid} className="img-fluid rounded-top card-img-top" />
@@ -13,7 +13,8 @@ const Post = ({ uid, content, image }) => {
 
       <div className="card-footer text-muted">
         <div className="row">
-          <div className="col">
+          <div className="col">{name}</div>
+          <div className="col text-right">
             <span className="oi oi-heart"></span> <span>Likes</span>
           </div>
           <div className="col text-right">
