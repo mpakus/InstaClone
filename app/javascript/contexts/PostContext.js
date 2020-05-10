@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 
 import fetchPost from '../services/api/fetchPost';
+import createComment from '../services/api/createComment';
 
 export const PostContext = createContext();
 
@@ -14,6 +15,7 @@ const PostContextProvider = (props) => {
     loadPost();
   }, [loading]);
 
+  // --- Post ---
   const loadPost = () => {
     fetchPost(uid).then((data) => {
       setState({ ...state, post: data, loading: false });
@@ -24,7 +26,18 @@ const PostContextProvider = (props) => {
     document.location = '/';
   };
 
-  return <PostContext.Provider value={{ post, resetPosts }}>{props.children}</PostContext.Provider>;
+  // --- Comment ---
+  const addComment = (content) => {
+    if (content === '') return;
+
+    createComment(uid, content).then(() => {
+      setState({ ...state, loading: true });
+    });
+  };
+
+  return (
+    <PostContext.Provider value={{ post, loading, resetPosts, addComment }}>{props.children}</PostContext.Provider>
+  );
 };
 
 export default PostContextProvider;

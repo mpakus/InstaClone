@@ -17,10 +17,12 @@ class PostSerializer
 
   def prepare_post
     {
-      uid:     post.uid,
-      content: post.content,
-      image:   post.image.attached? ? post_image : default_image,
-      user:    UserSerializer.new(post.user).present
+      uid:           post.uid,
+      content:       post.content,
+      image:         post.image.attached? ? post_image : default_image,
+      user:          UserSerializer.new(post.user).present,
+      comments:      CommentsSerializer.new(post.comments.reordered).present,
+      commentsCount: post.comments_count
     }
   end
 

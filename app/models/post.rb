@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   uniqable :uid
 
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
   has_one_attached :image
 
@@ -19,12 +20,13 @@ end
 #
 # Table name: posts
 #
-#  id         :bigint           not null, primary key
-#  content    :text
-#  uid        :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint           not null
+#  id             :bigint           not null, primary key
+#  comments_count :integer          default(0)
+#  content        :text
+#  uid            :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  user_id        :bigint           not null
 #
 # Indexes
 #

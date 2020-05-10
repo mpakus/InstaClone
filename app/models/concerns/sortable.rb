@@ -5,5 +5,6 @@ module Sortable
 
   included do
     scope :ordered, -> { order(created_at: :desc) }
+    scope :reordered, -> { order(created_at: :asc) }
   end
 end

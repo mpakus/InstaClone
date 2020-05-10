@@ -4,7 +4,7 @@ class Api::V1::ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
   before_action :authenticate
 
-  rescue_from ActiveRecord::RecordInvalid, with: :error_invalid_record
+  rescue_from StandardError, with: :error_json_response
 
   layout false
 
@@ -23,7 +23,7 @@ class Api::V1::ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: token.user_id)
   end
 
-  def error_invalid_record(exception)
+  def error_json_response(exception)
     render json: { error: exception.full_message }, status: :bad_request
   end
 end

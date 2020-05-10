@@ -2,7 +2,7 @@ import React from 'react';
 
 import './index.scss';
 
-const Post = ({ uid, content, image, user: { name } }) => {
+const Post = ({ commentsCount, uid, content, image, user: { name } }) => {
   return (
     <div className="card post-card">
       <a href={`/posts/${uid}`}>
@@ -20,7 +20,8 @@ const Post = ({ uid, content, image, user: { name } }) => {
             <span className="oi oi-heart"></span> <span>Likes</span>
           </div>
           <div className="col text-right">
-            <span className="oi oi-comment-square"></span> <span>Comments</span>
+            <span className="oi oi-comment-square"></span> <span>{commentsCount}</span>
+            <span> comment(s)</span>
           </div>
         </div>
       </div>

@@ -21,3 +21,11 @@ We will evaluate the total coding and UX quality of the product.
 
 We are sure that it’s very possible to create a good-working full-feature
 application of this scope in one day or less.
+
+### Main page with Posts feed
+
+![Alt text](https://monosnap.com/image/Y0ctDLbcQrg1SYhfbrfeHKt1iRtHtW)
+
+### Image's page with comments
+
+![Alt text](https://monosnap.com/image/oWVhaxskTcyzwLGpuvC10NloFcGqAt)

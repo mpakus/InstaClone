@@ -27,7 +27,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'foreman'
-  gem 'rspec-rails'
+  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails', branch: '4-0-maintenance'
   gem 'shoulda-matchers'
   gem 'simplecov'
 end

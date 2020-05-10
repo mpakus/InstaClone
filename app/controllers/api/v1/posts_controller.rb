@@ -18,7 +18,7 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   end
 
   def show
-    post = Post.find_uniqable!(params[:id])
+    post = Post.includes(comments: [:user]).find_uniqable!(params[:id])
     render json: PostSerializer.new(post).present
   end
 

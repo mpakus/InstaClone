@@ -1,3 +1,17 @@
+GIT
+  remote: https://github.com/rspec/rspec-rails
+  revision: 6552be2b632ad3c499887ca844d94d817fb1b9f4
+  branch: 4-0-maintenance
+  specs:
+    rspec-rails (4.0.0)
+      actionpack (>= 4.2)
+      activesupport (>= 4.2)
+      railties (>= 4.2)
+      rspec-core (~> 3.9)
+      rspec-expectations (~> 3.9)
+      rspec-mocks (~> 3.9)
+      rspec-support (~> 3.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -196,14 +210,6 @@ GEM
     rspec-mocks (3.9.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
-    rspec-rails (4.0.0)
-      actionpack (>= 4.2)
-      activesupport (>= 4.2)
-      railties (>= 4.2)
-      rspec-core (~> 3.9)
-      rspec-expectations (~> 3.9)
-      rspec-mocks (~> 3.9)
-      rspec-support (~> 3.9)
     rspec-support (3.9.3)
     rubocop (0.82.0)
       jaro_winkler (~> 1.5.1)
@@ -299,7 +305,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.3)
-  rspec-rails
+  rspec-rails!
   rubocop
   rubocop-rails
   rubocop-rspec
