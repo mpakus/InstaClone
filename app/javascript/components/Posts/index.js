@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import Post from './Post';
 import { PostsContext } from '../../contexts/PostsContext';
-import Spinner from './Spinner';
+import Spinner from '../Spinner';
 import LoadMore from './LoadMore';
 
 const Posts = () => {

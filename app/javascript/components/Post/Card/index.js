@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import './index.scss';
+import { PostContext } from '../../../contexts/PostContext';
 
-const Post = ({ uid, content, image, user: { name } }) => {
+const Card = () => {
+  const { post } = useContext(PostContext);
+
+  const {
+    image,
+    uid,
+    content,
+    user: { name }
+  } = post;
+
   return (
     <div className="card post-card">
-      <a href={`/posts/${uid}`}>
-        <img src={image} alt={uid} className="img-fluid rounded-top card-img-top" />
-      </a>
+      <img src={image} alt={uid} className="img-fluid rounded-top card-img-top" />
 
       <div className="card-body">
         <cite>{content}</cite>
@@ -28,4 +35,4 @@ const Post = ({ uid, content, image, user: { name } }) => {
   );
 };
 
-export default Post;
+export default Card;

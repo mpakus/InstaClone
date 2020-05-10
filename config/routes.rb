@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  # --- DEVISE ---
+
   devise_for :users,
              path: '/',
              path_names: {
@@ -13,12 +16,17 @@ Rails.application.routes.draw do
     get '/login' => 'devise/sessions#new', as: :login
   end
 
-  root 'home#index'
+  # --- WEB ---
+
+  root 'posts#index'
+  resources :posts, only: %i[index show]
+
+  # --- API ----
 
   namespace :api do
     namespace :v1 do
       get 'profile' => 'profile#index', as: :profile
-      resources :posts, only: %i[create index]
+      resources :posts, only: %i[create index show]
     end
   end
 end

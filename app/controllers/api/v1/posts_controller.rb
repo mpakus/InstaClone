@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::PostsController < Api::V1::ApplicationController
-  skip_before_action :authenticate, only: [:index]
+  skip_before_action :authenticate, only: %i[index show]
 
   def index
     posts = Post
@@ -14,6 +14,11 @@ class Api::V1::PostsController < Api::V1::ApplicationController
 
   def create
     post = current_user.posts.create!(post_params)
+    render json: PostSerializer.new(post).present
+  end
+
+  def show
+    post = Post.find_uniqable!(params[:id])
     render json: PostSerializer.new(post).present
   end
 
