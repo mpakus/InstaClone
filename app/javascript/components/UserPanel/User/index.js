@@ -1,26 +1,40 @@
-import React, { useContext, useState, useCallback } from 'react';
+import React, { useContext, useState } from 'react';
 
 import './index.scss';
 
 import createPost from 'services/api/createPost';
 import { AuthContext } from 'contexts/AuthContext';
+import ImageInput from './ImageInput';
+import TextInput from './TextInput';
 
-const defaultState = { content: '', image: null };
+const defaultState = { content: '', image: null, creating: false, imageKey: 'imageFile1' };
 
 const User = () => {
   const { currentUser } = useContext(AuthContext);
   const [state, setState] = useState(defaultState);
 
-  const { image, content } = state;
+  const { image, content, creating, imageKey } = state;
 
   const onFormSubmit = (e) => {
-    createPost(image, content).then((data) => {
-      console.log(data);
-      useCallback(() => setState({ ...defaultState }), []);
-    });
-
     e.preventDefault();
-    return false;
+
+    if (!(image && content)) {
+      return;
+    }
+
+    setState({ ...state, creating: true });
+
+    createPost(image, content).then((data) => {
+      setState({ ...defaultState, imageKey: `imageFile${new Date()}` });
+    });
+  };
+
+  const onImageChange = (e) => {
+    setState({ ...state, image: e.target.files[0] });
+  };
+
+  const onTextChange = (e) => {
+    setState({ ...state, content: e.target.value });
   };
 
   return (
@@ -35,14 +49,9 @@ const User = () => {
 
       <div className="profile-usermenu">
         <form onSubmit={onFormSubmit}>
-          <input type="file" onChange={(e) => setState({ ...state, image: e.target.files[0] })} accept="image/*" />
-          <textarea
-            className="form-control col-12"
-            rows="5"
-            onChange={(e) => setState({ ...state, content: e.target.value })}
-            defaultValue={content}
-          />
-          <button type="submit" className="btn btn-dark col-12">
+          <ImageInput onChange={onImageChange} imageKey={imageKey} />
+          <TextInput onChange={onTextChange} content={content} creating={creating} />
+          <button type="submit" className="btn btn-danger col-12 submit-button" disabled={creating}>
             Upload
           </button>
         </form>

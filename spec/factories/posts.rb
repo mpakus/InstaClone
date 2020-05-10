@@ -3,7 +3,8 @@
 FactoryBot.define do
   factory :post do
     user
-    content { Faker::Lorem.sentence(3) }
+    content { Faker::Lorem.sentence(word_count: 3) }
+    image { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/vader.jpg'), 'image/jpg') }
   end
 end
 
