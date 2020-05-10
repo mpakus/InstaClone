@@ -8,6 +8,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :likes, class_name: 'Post::Like', dependent: :destroy
 
   has_one_attached :image
 
@@ -23,6 +24,7 @@ end
 #  id             :bigint           not null, primary key
 #  comments_count :integer          default(0)
 #  content        :text
+#  likes_count    :integer          default(0)
 #  uid            :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null

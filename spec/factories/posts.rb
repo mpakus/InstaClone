@@ -15,6 +15,7 @@ end
 #  id             :bigint           not null, primary key
 #  comments_count :integer          default(0)
 #  content        :text
+#  likes_count    :integer          default(0)
 #  uid            :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
