@@ -2,20 +2,19 @@
 
 RSpec.describe 'Api::V1::Posts', type: :request do
   let(:user) { create :user }
-  let(:post) { create :post }
+  let(:post_img) { create :post }
 
   # --- GET POST ---
 
   describe 'GET /api/v1/posts' do
-    let(:request) { get api_v1_post_path(post) }
+    let(:request) { get api_v1_post_path(post_img.uid) }
 
     before { post && request }
 
     context 'with default params' do
-
       it { expect(response).to have_http_status(:ok) }
-      it { expect(json_body['uid']).to eq post.uid }
-      it { expect(json_body['content']).to eq post.content }
+      it { expect(json_body['uid']).to eq post_img.uid }
+      it { expect(json_body['content']).to eq post_img.content }
       it { expect(json_body['user']).not_to be_empty }
     end
   end

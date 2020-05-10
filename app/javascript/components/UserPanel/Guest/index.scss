@@ -1,0 +1,12 @@
+@import "../../../styles/theme";
+
+.guest-sidebar {
+  padding: 20px 0;
+  background-color: $orange;
+  color: $white;
+  border-radius: 5px;
+
+  a {
+    color: $indigo;
+  }
+}

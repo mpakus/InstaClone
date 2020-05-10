@@ -4,7 +4,7 @@ import './index.scss';
 
 const Post = ({ commentsCount, uid, content, image, user: { name } }) => {
   return (
-    <div className="card post-card">
+    <div className="card post-card shadow-sm">
       <a href={`/posts/${uid}`}>
         <img src={image} alt={uid} className="img-fluid rounded-top card-img-top" />
       </a>

@@ -42,7 +42,7 @@ const User = (props) => {
   };
 
   return (
-    <div className="profile-sidebar">
+    <div className="profile-sidebar shadow">
       <div className="profile-userpic text-center">
         <img src={currentUser.avatar} className="img-responsive" alt="{currentUser.name}" />
       </div>
@@ -50,6 +50,12 @@ const User = (props) => {
       <h3 className="profile-usertitle text-center">
         <div className="profile-usertitle-name">{currentUser.name}</div>
       </h3>
+
+      <div className="text-center">
+        <a href="/logout" className="badge badge-warning">
+          sign out
+        </a>
+      </div>
 
       <div className="profile-usermenu">
         <form onSubmit={onFormSubmit}>
