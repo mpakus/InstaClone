@@ -1,5 +1,7 @@
 ## InstaClone
 
+![InstaClone CI](https://github.com/mpakus/InstaClone/workflows/InstaClone%20CI/badge.svg)
+
 We’re asking you to create a small MVP-like web application mimicking
 basic Instagram functionality including:
 
@@ -29,3 +31,15 @@ application of this scope in one day or less.
 ### Image's page with comments
 
 ![Alt text](https://monosnap.com/image/oWVhaxskTcyzwLGpuvC10NloFcGqAt)
+
+
+### Installation
+
+```bash
+bundle install
+yarn install
+rails db:create
+rails db:setup
+foreman start --procfile=./Procfile.dev
+```
+
