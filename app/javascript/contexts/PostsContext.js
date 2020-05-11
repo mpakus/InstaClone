@@ -1,5 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
+
 import fetchPosts from '../services/api/fetchPosts';
+import likesPost from '../services/api/likesPost';
 
 export const PostsContext = createContext();
 
@@ -41,8 +43,15 @@ const PostsContextProvider = (props) => {
     setState({ ...state, page: page + 1, loading: true });
   };
 
+  const likePost = (index) => {
+    likesPost(posts[index].uid).then((data) => {
+      posts[index].likesCount = data.count;
+      setState({ ...state, posts });
+    });
+  };
+
   return (
-    <PostsContext.Provider value={{ posts, loading, haveMore, resetPosts, loadNextPosts }}>
+    <PostsContext.Provider value={{ posts, loading, haveMore, resetPosts, loadNextPosts, likePost }}>
       {props.children}
     </PostsContext.Provider>
   );

@@ -9,7 +9,7 @@ import Comment from '../Comment';
 import Spinner from '../../Spinner';
 
 const Card = () => {
-  const { loading, post, addComment } = useContext(PostContext);
+  const { loading, post, addComment, likePost } = useContext(PostContext);
   const { isGuest } = useContext(AuthContext);
 
   const {
@@ -18,8 +18,15 @@ const Card = () => {
     content,
     user: { name },
     comments,
+    likesCount,
     commentsCount
   } = post;
+
+  const onLikesClick = (e) => {
+    e.preventDefault();
+
+    likePost(uid);
+  };
 
   const commentsList = comments.map((comment) => {
     return <Comment {...comment} key={comment.uid} />;
@@ -36,9 +43,13 @@ const Card = () => {
 
         <div className="card-footer text-muted">
           <div className="row">
-            <div className="col">{name}</div>
-            <div className="col text-right">
-              <span className="oi oi-heart"></span> <span>Likes</span>
+            <div className="col">
+              <a href="#" className="badge badge-danger badge-likes" onClick={onLikesClick}>
+                <span className="oi oi-heart"></span>
+                &nbsp;
+                <span>{likesCount}</span>
+              </a>
+              <span>{name}</span>
             </div>
             <div className="col text-right">
               <span className="oi oi-comment-square"></span> <span>{commentsCount}</span>

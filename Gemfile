@@ -17,7 +17,6 @@ gem 'puma', '~> 4.1'
 gem 'rack-cors'
 gem 'rails', '~> 6.0.3'
 gem 'slim-rails'
-gem 'turbolinks', '~> 5'
 gem 'uniqable'
 gem 'webpacker', '~> 4.0'
 

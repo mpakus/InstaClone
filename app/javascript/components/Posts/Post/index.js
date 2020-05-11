@@ -2,7 +2,24 @@ import React from 'react';
 
 import './index.scss';
 
-const Post = ({ commentsCount, uid, content, image, user: { name } }) => {
+const Post = (props) => {
+  const {
+    uid,
+    content,
+    image,
+    commentsCount,
+    likesCount,
+    index,
+    likePost,
+    user: { name }
+  } = props;
+
+  const onLikesClick = (e) => {
+    e.preventDefault();
+
+    likePost(index);
+  };
+
   return (
     <div className="card post-card shadow-sm">
       <a href={`/posts/${uid}`}>
@@ -15,13 +32,18 @@ const Post = ({ commentsCount, uid, content, image, user: { name } }) => {
 
       <div className="card-footer text-muted">
         <div className="row">
-          <div className="col">{name}</div>
-          <div className="col text-right">
-            <span className="oi oi-heart"></span> <span>Likes</span>
+          <div className="col">
+            <a href="#" className="badge badge-danger badge-likes" onClick={onLikesClick}>
+              <span className="oi oi-heart"></span>
+              &nbsp;
+              <span>{likesCount}</span>
+            </a>
+            <div>{name}</div>
           </div>
           <div className="col text-right">
-            <span className="oi oi-comment-square"></span> <span>{commentsCount}</span>
-            <span> comment(s)</span>
+            <span className="badge badge-primar">
+              <span className="oi oi-comment-square"></span> <span>{commentsCount}</span>
+            </span>
           </div>
         </div>
       </div>

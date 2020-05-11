@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   # --- DEVISE ---
 
   devise_for :users,
-             path: '/',
+             path:       '/',
              path_names: {
-               sign_in: 'login',
-               sign_out: 'logout',
-               password: 'remember',
+               sign_in:      'login',
+               sign_out:     'logout',
+               password:     'remember',
                registration: 'signup'
              }
   devise_scope :user do
@@ -26,8 +26,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'profile' => 'profile#index', as: :profile
+
       resources :posts, only: %i[create index show] do
-        resources :comments, only: [:create]
+        resources :comments, only: %i[create]
+        resources :likes, only: %i[create]
       end
     end
   end

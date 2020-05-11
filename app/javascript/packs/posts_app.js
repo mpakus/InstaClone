@@ -20,7 +20,7 @@ const PostsApp = ({ token }) => {
   );
 };
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const appContainer = document.getElementById('App');
   const token = appContainer.getAttribute('data-token');
 

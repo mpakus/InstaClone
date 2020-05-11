@@ -22,7 +22,8 @@ class PostSerializer
       image:         post.image.attached? ? post_image : default_image,
       user:          UserSerializer.new(post.user).present,
       comments:      CommentsSerializer.new(post.comments.reordered).present,
-      commentsCount: post.comments_count
+      commentsCount: post.comments_count,
+      likesCount:    post.likes_count
     }
   end
 

@@ -6,16 +6,16 @@ import Spinner from '../Spinner';
 import LoadMore from './LoadMore';
 
 const Posts = () => {
-  const { posts, loading, haveMore, loadNextPosts } = useContext(PostsContext);
+  const { posts, loading, haveMore, loadNextPosts, likePost } = useContext(PostsContext);
 
-  const postsList = posts.map((post) => {
-    return <Post {...post} key={post.uid} />;
+  const postsList = posts.map((post, index) => {
+    return <Post {...post} key={post.uid} index={index} likePost={likePost} />;
   });
 
   return (
     <div className="col-lg-8">
       {loading && <Spinner />}
-      {postsList}
+      <div className="card-columns post-card-columns">{postsList}</div>
       {haveMore && !loading && <LoadMore onClick={loadNextPosts} />}
     </div>
   );

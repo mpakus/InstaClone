@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 
 import fetchPost from '../services/api/fetchPost';
+import likesPost from '../services/api/likesPost';
 import createComment from '../services/api/createComment';
 
 export const PostContext = createContext();
@@ -35,8 +36,18 @@ const PostContextProvider = (props) => {
     });
   };
 
+  // --- Likes ---
+  const likePost = (uid) => {
+    likesPost(uid).then((data) => {
+      post.likesCount = data.count;
+      setState({ ...state, post });
+    });
+  };
+
   return (
-    <PostContext.Provider value={{ post, loading, resetPosts, addComment }}>{props.children}</PostContext.Provider>
+    <PostContext.Provider value={{ post, loading, resetPosts, addComment, likePost }}>
+      {props.children}
+    </PostContext.Provider>
   );
 };
 
