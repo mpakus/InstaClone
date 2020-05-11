@@ -10,6 +10,8 @@ class Comment < ApplicationRecord
   uniqable :uid
 
   validates :content, presence: true
+
+  scope :with_relations, -> { includes(:user) }
 end
 
 # == Schema Information

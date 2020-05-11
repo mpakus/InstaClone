@@ -14,7 +14,7 @@ class Post < ApplicationRecord
 
   validates :image, presence: true
 
-  scope :with_relations, -> { includes(:user) }
+  scope :with_relations, -> { includes(:user, image_attachment: :blob) }
 end
 
 # == Schema Information

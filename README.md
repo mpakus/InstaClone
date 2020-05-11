@@ -24,7 +24,7 @@ application of this scope in one day or less.
 
 ### Main page with Posts feed
 
-![Alt text](https://monosnap.com/image/Y0ctDLbcQrg1SYhfbrfeHKt1iRtHtW)
+![Alt text](https://monosnap.com/image/fwpYssVOUtRx0HIy6H4HED2EYJL8rl)
 
 ### Image's page with comments
 

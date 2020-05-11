@@ -1,8 +1,8 @@
 import API from './API';
 
-export default function fetchPosts(page = 0, per = 30) {
+export default function fetchPosts(page = 0, user = null, likesFilter = null, commentsFilter = null, per = 30) {
   const url = new URL(`${API.url}/posts`);
-  url.search = new URLSearchParams({ page, per });
+  url.search = new URLSearchParams({ page, per, user, likesFilter, commentsFilter });
 
   return fetch(url, {
     method: 'GET',

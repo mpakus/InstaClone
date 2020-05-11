@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class PostSerializer
-  def initialize(post)
+  def initialize(post, no_comments = false)
     @post = post
+    @no_comments = no_comments
   end
 
   def present
@@ -13,7 +14,7 @@ class PostSerializer
 
   private
 
-  attr_reader :post
+  attr_reader :post, :no_comments
 
   def prepare_post
     {
@@ -21,7 +22,7 @@ class PostSerializer
       content:       post.content,
       image:         post.image.attached? ? post_image : default_image,
       user:          UserSerializer.new(post.user).present,
-      comments:      CommentsSerializer.new(post.comments.reordered).present,
+      comments:      no_comments ? [] : CommentsSerializer.new(post.comments.with_relations.reordered).present,
       commentsCount: post.comments_count,
       likesCount:    post.likes_count
     }

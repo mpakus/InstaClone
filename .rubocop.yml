@@ -14,6 +14,8 @@ Lint/SuppressedException:
 # Offense count: 1
 Metrics/AbcSize:
   Max: 20
+  Exclude:
+    - app/serializers/**/*
 
 # Offense count: 84
 # Configuration parameters: AllowURI, URISchemes.
@@ -94,4 +96,7 @@ RSpec/NamedSubject:
   Enabled: false
 
 RSpec/DescribeClass:
+  Enabled: false
+
+RSpec/NestedGroups:
   Enabled: false
