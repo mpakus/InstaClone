@@ -12,7 +12,6 @@ export default function createComment(uid, content) {
   formData.append('content', content);
 
   const url = `${API.url}/posts/${uid}/comments`;
-
   return fetch(url, {
     method: 'POST',
     headers: Token.headers(token),

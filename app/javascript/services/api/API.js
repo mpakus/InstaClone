@@ -1,6 +1,10 @@
 const API = {
-  version: '1',
-  url: `http://localhost:5000/api/v1`
+  url: `/api/v1`,
+  toQuery: (params) => {
+    return Object.keys(params)
+      .map((key) => `${key}=${params[key]}`)
+      .join('&');
+  }
 };
 
 export default API;

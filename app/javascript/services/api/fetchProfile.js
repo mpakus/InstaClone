@@ -1,3 +1,4 @@
+import API from './API';
 import Token from '../../utils/Token';
 
 export default function fetchProfile() {
@@ -7,7 +8,8 @@ export default function fetchProfile() {
     return {};
   }
 
-  return fetch('/api/v1/profile', {
+  const url = `${API.url}/profile.json`;
+  return fetch(url, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

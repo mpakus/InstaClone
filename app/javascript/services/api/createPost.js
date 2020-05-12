@@ -1,4 +1,5 @@
 import Token from 'utils/Token';
+import API from './API';
 
 export default function createPost(image, content) {
   const { token } = localStorage;
@@ -11,7 +12,8 @@ export default function createPost(image, content) {
   formData.append('image', image);
   formData.append('content', content);
 
-  return fetch('/api/v1/posts', {
+  const url = `${API.url}/posts`;
+  return fetch(url, {
     method: 'POST',
     headers: Token.headers(token),
     body: formData
